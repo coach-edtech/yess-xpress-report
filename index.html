@@ -1,0 +1,842 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Site Summary Report — yess-xpress.id</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+<style>
+:root{
+  --ink:#0A0E14;
+  --ink-2:#1A1F26;
+  --paper:#F4EEDC;
+  --paper-2:#EAE2C8;
+  --paper-3:#DCD0AE;
+  --line:#C9BFA6;
+  --line-2:#A89E80;
+  --muted:#6B6259;
+  --muted-2:#4A4339;
+  --accent:#C8341A;
+  --accent-2:#9C2410;
+  --warning:#B8741A;
+  --ok:#2D5A3D;
+  --neutral:#1F2937;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{background:var(--paper);color:var(--ink);font-family:'Plus Jakarta Sans',sans-serif;font-weight:400;line-height:1.5;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+body{overflow-x:hidden;background-image:radial-gradient(rgba(10,14,20,0.04) 1px,transparent 1px);background-size:4px 4px;background-position:0 0}
+.wrap{max-width:1280px;margin:0 auto;padding:0 56px}
+.mono{font-family:'JetBrains Mono',monospace;font-feature-settings:"tnum" 1,"ss01" 1;letter-spacing:-0.01em}
+.serif{font-family:'Instrument Serif',serif;font-weight:400;letter-spacing:-0.01em}
+
+/* ---------- COVER ---------- */
+.cover{min-height:100vh;display:flex;flex-direction:column;justify-content:space-between;padding:48px 0 32px;position:relative;border-bottom:1px solid var(--line)}
+.cover-top{display:flex;justify-content:space-between;align-items:flex-start;font-size:11px;text-transform:uppercase;letter-spacing:0.18em;color:var(--muted-2);font-weight:600}
+.cover-top .stamp{display:flex;align-items:center;gap:10px}
+.cover-top .dot{width:8px;height:8px;background:var(--accent);border-radius:50%;display:inline-block;animation:pulse 2.4s ease-in-out infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.35}}
+.cover-main{margin-top:48px}
+.cover-eyebrow{font-size:12px;text-transform:uppercase;letter-spacing:0.3em;color:var(--accent);font-weight:700;margin-bottom:24px;display:flex;align-items:center;gap:14px}
+.cover-eyebrow::before{content:"";width:36px;height:1px;background:var(--accent)}
+.cover-title{font-family:'Instrument Serif',serif;font-size:clamp(64px,11vw,168px);line-height:0.92;letter-spacing:-0.025em;margin-bottom:32px}
+.cover-title em{font-style:italic;color:var(--accent)}
+.cover-domain{font-family:'Instrument Serif',serif;font-style:italic;font-size:clamp(36px,5vw,64px);color:var(--ink);margin-bottom:48px;display:flex;align-items:baseline;gap:12px;flex-wrap:wrap}
+.cover-domain::before{content:"//";color:var(--accent);font-style:normal;font-size:0.7em;letter-spacing:0.05em}
+.cover-meta{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border-top:1px solid var(--ink);border-bottom:1px solid var(--ink);padding:24px 0}
+.cover-meta div{padding:0 24px;border-left:1px solid var(--ink)}
+.cover-meta div:first-child{border-left:none;padding-left:0}
+.cover-meta .lbl{font-size:10px;text-transform:uppercase;letter-spacing:0.2em;color:var(--muted-2);font-weight:600;margin-bottom:6px}
+.cover-meta .val{font-family:'Instrument Serif',serif;font-size:28px;line-height:1}
+.cover-meta .val small{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--muted-2);margin-left:6px;font-weight:400}
+.cover-bottom{display:flex;justify-content:space-between;align-items:flex-end;margin-top:32px;font-size:11px;text-transform:uppercase;letter-spacing:0.2em;color:var(--muted-2);font-weight:600}
+.byline{display:flex;align-items:baseline;gap:14px;margin-bottom:40px;flex-wrap:wrap}
+.byline .lbl{font-family:'JetBrains Mono',monospace;font-size:10px;text-transform:uppercase;letter-spacing:0.25em;color:var(--muted-2);font-weight:600;position:relative;padding-left:48px;align-self:center}
+.byline .lbl::before{content:"";position:absolute;left:0;top:50%;width:36px;height:1px;background:var(--ink);transform:translateY(-50%)}
+.byline .name{font-family:'Instrument Serif',serif;font-style:italic;font-size:clamp(28px,3.4vw,40px);color:var(--ink);letter-spacing:-0.015em;line-height:1}
+.byline .name .role{color:var(--muted-2);font-style:normal;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.18em;text-transform:uppercase;margin-left:14px;font-weight:500;vertical-align:middle}
+
+/* ---------- HEALTH SCORE ---------- */
+.health{padding:96px 0 64px;border-bottom:1px solid var(--line);position:relative}
+.health-grid{display:grid;grid-template-columns:1.1fr 1fr;gap:80px;align-items:center}
+.health-score{position:relative}
+.health-score .ring{position:relative;width:100%;max-width:420px;aspect-ratio:1;margin:0 auto}
+.health-score svg{width:100%;height:100%;transform:rotate(-90deg)}
+.health-score .ring-bg{fill:none;stroke:var(--paper-3);stroke-width:1.5}
+.health-score .ring-fg{fill:none;stroke:var(--accent);stroke-width:1.5;stroke-linecap:round;stroke-dasharray:879;stroke-dashoffset:660;transition:stroke-dashoffset 1.6s cubic-bezier(.2,.7,.2,1)}
+.health-score .center{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center}
+.health-score .num{font-family:'Instrument Serif',serif;font-size:148px;line-height:0.9;color:var(--ink);letter-spacing:-0.04em}
+.health-score .num em{color:var(--accent);font-style:italic}
+.health-score .num-lbl{font-size:11px;text-transform:uppercase;letter-spacing:0.3em;color:var(--muted-2);font-weight:600;margin-top:8px}
+.health-text h2{font-family:'Instrument Serif',serif;font-size:48px;line-height:1.05;margin-bottom:24px;letter-spacing:-0.02em}
+.health-text h2 em{font-style:italic;color:var(--accent)}
+.health-text p{color:var(--muted-2);font-size:16px;max-width:480px;margin-bottom:16px}
+.health-tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:24px}
+.tag{display:inline-flex;align-items:center;gap:6px;padding:6px 12px;border:1px solid var(--ink);font-size:10px;text-transform:uppercase;letter-spacing:0.15em;font-weight:600;border-radius:999px;background:var(--paper-2)}
+.tag.bad{background:var(--accent);color:var(--paper);border-color:var(--accent)}
+.tag.warn{background:var(--warning);color:var(--paper);border-color:var(--warning)}
+.tag.ok{background:var(--ok);color:var(--paper);border-color:var(--ok)}
+.tag .x{opacity:0.6}
+
+/* ---------- SECTION FRAME ---------- */
+.section{padding:96px 0;border-bottom:1px solid var(--line);position:relative}
+.section-head{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:56px;gap:24px;flex-wrap:wrap}
+.section-id{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--accent);letter-spacing:0.15em;text-transform:uppercase;font-weight:600;margin-bottom:12px;display:flex;align-items:center;gap:10px}
+.section-id::before{content:"";width:24px;height:1px;background:var(--accent)}
+.section-title{font-family:'Instrument Serif',serif;font-size:clamp(36px,5vw,56px);line-height:1.02;letter-spacing:-0.02em;max-width:760px}
+.section-title em{font-style:italic;color:var(--accent)}
+.section-sub{color:var(--muted-2);font-size:14px;max-width:380px;text-align:right}
+.section-rule{display:flex;align-items:center;gap:12px;margin-bottom:24px}
+.section-rule .ln{flex:1;height:1px;background:var(--ink)}
+.section-rule .ln.short{flex:0 0 60px}
+.section-rule .dot{width:6px;height:6px;background:var(--accent);border-radius:50%}
+
+/* ---------- STAT CARDS ---------- */
+.stats{display:grid;grid-template-columns:repeat(4,1fr);border:1px solid var(--ink)}
+.stat{padding:28px 24px;border-left:1px solid var(--ink);position:relative;background:var(--paper);transition:background .25s}
+.stat:first-child{border-left:none}
+.stat:hover{background:var(--paper-2)}
+.stat .lbl{font-size:10px;text-transform:uppercase;letter-spacing:0.2em;color:var(--muted-2);font-weight:700;margin-bottom:16px;display:flex;justify-content:space-between;align-items:center}
+.stat .lbl .pill{font-size:9px;padding:3px 8px;border:1px solid currentColor;border-radius:999px;letter-spacing:0.1em}
+.stat .num{font-family:'Instrument Serif',serif;font-size:72px;line-height:0.95;letter-spacing:-0.04em;color:var(--ink)}
+.stat .num em{font-style:italic}
+.stat .num small{font-family:'JetBrains Mono',monospace;font-size:13px;color:var(--muted-2);margin-left:8px;font-weight:400;letter-spacing:0}
+.stat .desc{font-size:12px;color:var(--muted-2);margin-top:14px;line-height:1.4}
+.stat.bad .num{color:var(--accent)}
+.stat.warn .num{color:var(--warning)}
+.stat.ok .num{color:var(--ok)}
+.stat .bar{margin-top:18px;height:3px;background:var(--paper-3);position:relative;overflow:hidden}
+.stat .bar i{position:absolute;left:0;top:0;height:100%;background:var(--ink)}
+.stat.bad .bar i{background:var(--accent)}
+.stat.warn .bar i{background:var(--warning)}
+.stat.ok .bar i{background:var(--ok)}
+
+/* ---------- BAR CHART (Competitors / Landing elements) ---------- */
+.bars{display:grid;gap:1px;background:var(--line);border:1px solid var(--line)}
+.bar-row{display:grid;grid-template-columns:240px 1fr 70px;align-items:center;background:var(--paper);padding:14px 20px;gap:24px;transition:background .2s}
+.bar-row:hover{background:var(--paper-2)}
+.bar-row .name{font-size:14px;font-weight:600;display:flex;align-items:center;gap:10px}
+.bar-row .name .rank{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--muted-2);background:var(--paper-2);padding:2px 6px;border-radius:2px;width:24px;text-align:center}
+.bar-row .bar-track{position:relative;height:24px;background:var(--paper-2);overflow:hidden}
+.bar-row .bar-fill{position:absolute;left:0;top:0;bottom:0;background:var(--ink);transition:width 1.2s cubic-bezier(.2,.7,.2,1)}
+.bar-row.accent .bar-fill{background:var(--accent)}
+.bar-row .num{font-family:'JetBrains Mono',monospace;font-size:14px;font-weight:600;text-align:right}
+.bar-row .num small{font-size:9px;color:var(--muted-2);font-weight:400;margin-left:2px}
+
+/* ---------- STATUS GRID (Security / Hosting) ---------- */
+.status-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:0;border:1px solid var(--ink)}
+.status-row{display:flex;justify-content:space-between;align-items:center;padding:18px 24px;border-bottom:1px solid var(--line);background:var(--paper);font-size:14px;transition:background .2s}
+.status-row:hover{background:var(--paper-2)}
+.status-row .lbl{font-weight:500;color:var(--ink)}
+.status-row .val{font-family:'JetBrains Mono',monospace;font-size:13px;font-weight:600;display:flex;align-items:center;gap:8px}
+.status-row .val.yes{color:var(--ok)}
+.status-row .val.no{color:var(--accent)}
+.status-row .val .ico{width:8px;height:8px;border-radius:50%;display:inline-block}
+.status-row .val.yes .ico{background:var(--ok)}
+.status-row .val.no .ico{background:var(--accent)}
+.status-row .val.warn{color:var(--warning)}
+.status-row .val.warn .ico{background:var(--warning)}
+
+/* ---------- TWO-COL ---------- */
+.twocol{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start}
+.threecol{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.col-card{padding:32px;background:var(--paper-2);border:1px solid var(--line);position:relative}
+.col-card .hd{font-size:11px;text-transform:uppercase;letter-spacing:0.2em;color:var(--muted-2);font-weight:700;margin-bottom:20px;display:flex;justify-content:space-between;align-items:center}
+.col-card .big{font-family:'Instrument Serif',serif;font-size:64px;line-height:1;margin-bottom:8px}
+.col-card .big em{font-style:italic}
+.col-card.bad .big{color:var(--accent)}
+.col-card.warn .big{color:var(--warning)}
+.col-card.ok .big{color:var(--ok)}
+.col-card .body{color:var(--muted-2);font-size:13px;line-height:1.5}
+.col-card .stamp{position:absolute;top:20px;right:20px;font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--muted);text-transform:uppercase;letter-spacing:0.1em}
+
+/* ---------- TABLE ---------- */
+table{width:100%;border-collapse:collapse;font-size:13px}
+th{text-align:left;font-size:10px;text-transform:uppercase;letter-spacing:0.2em;color:var(--muted-2);font-weight:700;padding:12px 16px;border-bottom:1.5px solid var(--ink);background:var(--paper-2)}
+td{padding:14px 16px;border-bottom:1px solid var(--line);vertical-align:middle}
+tbody tr{transition:background .15s}
+tbody tr:hover{background:var(--paper-2)}
+td.num{font-family:'JetBrains Mono',monospace;font-weight:600;text-align:right}
+td .dot{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:8px;vertical-align:middle}
+td .dot.red{background:var(--accent)}
+td .dot.amber{background:var(--warning)}
+td .dot.green{background:var(--ok)}
+td .dot.gray{background:var(--muted)}
+td .dot.dark{background:var(--ink)}
+
+/* ---------- ALERT / CALLOUT ---------- */
+.callout{padding:32px 36px;border:1.5px solid var(--ink);background:var(--ink);color:var(--paper);position:relative;display:grid;grid-template-columns:auto 1fr;gap:32px;align-items:center}
+.callout .marker{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.15em;text-transform:uppercase;color:var(--accent);font-weight:700;display:flex;align-items:center;gap:10px;writing-mode:vertical-rl;transform:rotate(180deg);align-self:stretch;border-right:1px solid rgba(244,238,220,0.2);padding-right:20px}
+.callout h3{font-family:'Instrument Serif',serif;font-size:32px;line-height:1.1;margin-bottom:8px;letter-spacing:-0.02em}
+.callout h3 em{font-style:italic;color:#E8896F}
+.callout p{color:rgba(244,238,220,0.75);font-size:14px;line-height:1.6;max-width:680px}
+.callout.accent{background:var(--accent);color:var(--paper);border-color:var(--accent)}
+.callout.accent h3 em{color:#FFD8C8}
+.callout.accent p{color:rgba(244,238,220,0.85)}
+
+/* ---------- RANKINGS / BIG CALLOUT ---------- */
+.rank-zero{text-align:center;padding:80px 32px;border:1px solid var(--ink);background:var(--paper-2);position:relative;overflow:hidden}
+.rank-zero::before{content:"0";position:absolute;font-family:'Instrument Serif',serif;font-size:520px;line-height:0.8;color:rgba(200,52,26,0.06);left:50%;top:50%;transform:translate(-50%,-50%);z-index:0;pointer-events:none}
+.rank-zero>*{position:relative;z-index:1}
+.rank-zero .lbl{font-size:11px;text-transform:uppercase;letter-spacing:0.3em;color:var(--accent);font-weight:700;margin-bottom:24px;display:inline-flex;align-items:center;gap:14px}
+.rank-zero .lbl::before,.rank-zero .lbl::after{content:"";width:36px;height:1px;background:var(--accent)}
+.rank-zero h3{font-family:'Instrument Serif',serif;font-size:clamp(48px,7vw,96px);line-height:0.95;letter-spacing:-0.03em;margin-bottom:24px}
+.rank-zero h3 em{font-style:italic;color:var(--accent)}
+.rank-zero p{color:var(--muted-2);font-size:15px;max-width:560px;margin:0 auto}
+.rank-zero .metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin-top:48px;border:1px solid var(--ink);max-width:680px;margin-left:auto;margin-right:auto}
+.rank-zero .metrics div{padding:24px 16px;border-left:1px solid var(--ink)}
+.rank-zero .metrics div:first-child{border-left:none}
+.rank-zero .metrics .n{font-family:'Instrument Serif',serif;font-size:48px;line-height:1;color:var(--accent)}
+.rank-zero .metrics .l{font-size:10px;text-transform:uppercase;letter-spacing:0.2em;color:var(--muted-2);font-weight:700;margin-top:6px}
+
+/* ---------- TWO-COL BIG STATS (PageSpeed) ---------- */
+.speed{display:grid;grid-template-columns:1fr 1fr;gap:48px}
+.speed-card{padding:48px;border:1px solid var(--ink);background:var(--paper);position:relative}
+.speed-card .lbl{font-size:11px;text-transform:uppercase;letter-spacing:0.25em;color:var(--muted-2);font-weight:700;margin-bottom:24px}
+.speed-card .val{font-family:'Instrument Serif',serif;font-size:160px;line-height:0.9;letter-spacing:-0.04em;display:flex;align-items:baseline;gap:8px}
+.speed-card .val em{font-style:italic;font-size:0.5em;color:var(--accent);vertical-align:super}
+.speed-card .bar{margin-top:32px;height:8px;background:var(--paper-3);position:relative;overflow:hidden}
+.speed-card .bar i{position:absolute;left:0;top:0;bottom:0;background:var(--ink);transition:width 1.4s cubic-bezier(.2,.7,.2,1)}
+.speed-card .bar-labels{display:flex;justify-content:space-between;margin-top:8px;font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--muted-2);letter-spacing:0.1em}
+.speed-card .footnote{margin-top:32px;padding-top:24px;border-top:1px solid var(--line);font-size:13px;color:var(--muted-2)}
+
+/* ---------- FOOTER ---------- */
+footer{padding:64px 0 48px;font-size:11px;text-transform:uppercase;letter-spacing:0.2em;color:var(--muted-2);font-weight:600}
+footer .row{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px}
+footer .row .center{font-family:'Instrument Serif',serif;font-style:italic;text-transform:none;letter-spacing:0;font-size:18px;color:var(--ink)}
+
+/* ---------- ANIMATIONS ---------- */
+.reveal{opacity:0;transform:translateY(20px);transition:opacity .9s cubic-bezier(.2,.7,.2,1),transform .9s cubic-bezier(.2,.7,.2,1)}
+.reveal.in{opacity:1;transform:translateY(0)}
+.reveal-2{transition-delay:.12s}
+.reveal-3{transition-delay:.24s}
+.reveal-4{transition-delay:.36s}
+
+/* ---------- RESPONSIVE ---------- */
+@media (max-width:960px){
+  .wrap{padding:0 28px}
+  .cover-meta{grid-template-columns:repeat(2,1fr);border-top:1px solid var(--ink)}
+  .cover-meta div{border-top:1px solid var(--ink);padding:18px 18px 18px 0}
+  .cover-meta div:nth-child(3){border-left:none}
+  .health-grid,.twocol,.threecol,.speed{grid-template-columns:1fr;gap:48px}
+  .stats{grid-template-columns:repeat(2,1fr)}
+  .stat{border-left:1px solid var(--ink);border-top:1px solid var(--ink)}
+  .stat:nth-child(2n+1){border-left:none}
+  .stat:nth-child(-n+2){border-top:none}
+  .bar-row{grid-template-columns:160px 1fr 50px;gap:14px;padding:12px 14px}
+  .bar-row .name{font-size:12px}
+  .status-grid{grid-template-columns:1fr}
+  .callout{grid-template-columns:1fr;gap:16px}
+  .callout .marker{writing-mode:horizontal-tb;transform:none;border-right:none;border-bottom:1px solid rgba(244,238,220,0.2);padding:0 0 12px 0}
+  .rank-zero .metrics{grid-template-columns:1fr}
+  .rank-zero .metrics div{border-left:none;border-top:1px solid var(--ink)}
+  .rank-zero .metrics div:first-child{border-top:none}
+  .speed-card .val{font-size:110px}
+}
+
+/* Print */
+@media print{
+  body{background:#F4EEDC;background-image:radial-gradient(rgba(10,14,20,0.04) 1px,transparent 1px);background-size:4px 4px;background-position:0 0}
+  .section{page-break-inside:avoid}
+  .cover{page-break-after:always;min-height:auto;padding:24px 0 16px}
+  .cover-title{font-size:clamp(56px,9vw,128px);line-height:0.95;margin-bottom:20px}
+  .cover-domain{margin-bottom:28px}
+  .byline{margin-bottom:24px}
+  .cover-eyebrow{margin-bottom:16px}
+  .cover-main{margin-top:24px}
+  .cover-meta{padding:18px 0}
+  .cover-bottom{margin-top:20px}
+  /* Allow some sections to break if very tall */
+  .health,.speed,.rank-zero{page-break-inside:auto}
+}
+</style>
+</head>
+<body>
+
+<!-- ============== COVER ============== -->
+<header class="cover">
+  <div class="wrap">
+    <div class="cover-top">
+      <div class="stamp"><span class="dot"></span> Audit Report · Confidential</div>
+      <div>File No. YXP-2026-0730</div>
+    </div>
+
+    <div class="cover-main">
+      <div class="cover-eyebrow">Site Summary · Generated 30 July 2026</div>
+      <h1 class="cover-title">Site<br/>Summary <em>Report</em></h1>
+      <div class="byline">
+        <span class="lbl">Prepared by</span>
+        <span class="name">Coach Chaidir Bedalah <span class="role">Author · SEO Audit</span></span>
+      </div>
+      <div class="cover-domain">yess-xpress.id</div>
+
+      <div class="cover-meta">
+        <div>
+          <div class="lbl">Domain age</div>
+          <div class="val">1<small>yr</small> 2<small>mo</small></div>
+        </div>
+        <div>
+          <div class="lbl">Pages crawled</div>
+          <div class="val">6<small>/1000</small></div>
+        </div>
+        <div>
+          <div class="lbl">Critical issues</div>
+          <div class="val">41</div>
+        </div>
+        <div>
+          <div class="lbl">Google Top 10</div>
+          <div class="val">0</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="cover-bottom">
+      <div>Document · Site Summary</div>
+      <div>Scan ID · #0730-YXP-ID</div>
+      <div>28 modules · 1 domain</div>
+    </div>
+  </div>
+</header>
+
+<!-- ============== HEALTH SCORE ============== -->
+<section class="health">
+  <div class="wrap">
+    <div class="section-rule reveal"><span class="ln short"></span><span class="dot"></span><span class="ln"></span></div>
+    <div class="health-grid">
+      <div class="health-score reveal">
+        <div class="ring">
+          <svg viewBox="0 0 280 280">
+            <circle class="ring-bg" cx="140" cy="140" r="140"></circle>
+            <circle class="ring-fg" cx="140" cy="140" r="140" id="healthRing"></circle>
+          </svg>
+          <div class="center">
+            <div class="num">2<em>8</em></div>
+            <div class="num-lbl">Site Health · /100</div>
+          </div>
+        </div>
+      </div>
+      <div class="health-text reveal reveal-2">
+        <div class="section-id">00 · Executive Summary</div>
+        <h2>The site is live, but <em>invisible</em> to search.</h2>
+        <p>Technical foundation is in place — SSL is valid, the server returns no 5xx, and the site loads in just over a second on desktop. But discoverability is broken. There is no <strong>robots.txt</strong>, no <strong>sitemap.xml</strong>, and no structured data on any page. 24 critical SEO errors block indexation, and <strong>zero of the site's 50 tracked keywords rank in the Google Indonesia top 50</strong>.</p>
+        <p>The single biggest lever: ship a sitemap, fix on-page metadata, and earn the first ten inbound links. Everything else compounds from there.</p>
+        <div class="health-tags">
+          <span class="tag bad"><span class="x">●</span> 41 Critical</span>
+          <span class="tag warn"><span class="x">●</span> 38 Warnings</span>
+          <span class="tag ok"><span class="x">●</span> SSL Active</span>
+          <span class="tag ok"><span class="x">●</span> HTTPS 100%</span>
+          <span class="tag bad"><span class="x">●</span> No Sitemap</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============== COMPETITORS ============== -->
+<section class="section">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <div class="section-id">01 · Competitive Landscape</div>
+        <h2 class="section-title">Who owns the <em>Top 10</em> for the keywords this site is competing on.</h2>
+      </div>
+      <div class="section-sub">Eleven domains captured more than ten keyword positions in the same niche. Most are well-known Indonesian logistics brands.</div>
+    </div>
+    <div class="bars reveal" id="compBars">
+      <div class="bar-row"><div class="name"><span class="rank">01</span>spil.co.id</div><div class="bar-track"><div class="bar-fill" data-w="100"></div></div><div class="num">32</div></div>
+      <div class="bar-row"><div class="name"><span class="rank">02</span>instagram.com</div><div class="bar-track"><div class="bar-fill" data-w="94"></div></div><div class="num">30</div></div>
+      <div class="bar-row"><div class="name"><span class="rank">03</span>snglogistic.com</div><div class="bar-track"><div class="bar-fill" data-w="72"></div></div><div class="num">23</div></div>
+      <div class="bar-row"><div class="name"><span class="rank">04</span>ckb.co.id</div><div class="bar-track"><div class="bar-fill" data-w="72"></div></div><div class="num">23</div></div>
+      <div class="bar-row"><div class="name"><span class="rank">05</span>translate.google.com</div><div class="bar-track"><div class="bar-fill" data-w="63"></div></div><div class="num">20</div></div>
+      <div class="bar-row"><div class="name"><span class="rank">06</span>djatgo.id</div><div class="bar-track"><div class="bar-fill" data-w="53"></div></div><div class="num">17</div></div>
+      <div class="bar-row"><div class="name"><span class="rank">07</span>id.scribd.com</div><div class="bar-track"><div class="bar-fill" data-w="53"></div></div><div class="num">17</div></div>
+      <div class="bar-row"><div class="name"><span class="rank">08</span>cargonesia.co.id</div><div class="bar-track"><div class="bar-fill" data-w="41"></div></div><div class="num">13</div></div>
+      <div class="bar-row"><div class="name"><span class="rank">09</span>omkirim.com</div><div class="bar-track"><div class="bar-fill" data-w="41"></div></div><div class="num">13</div></div>
+      <div class="bar-row"><div class="name"><span class="rank">10</span>selog.astra.co.id</div><div class="bar-track"><div class="bar-fill" data-w="34"></div></div><div class="num">11</div></div>
+      <div class="bar-row accent"><div class="name"><span class="rank">11</span>forwarder.ai</div><div class="bar-track"><div class="bar-fill" data-w="31"></div></div><div class="num">10</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============== TECHNICAL AUDIT ============== -->
+<section class="section">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <div class="section-id">02 · Technical Audit</div>
+        <h2 class="section-title">The server is healthy. <em>The site is not.</em></h2>
+      </div>
+      <div class="section-sub">Critical issues block crawlers and search engines from properly indexing content.</div>
+    </div>
+    <div class="stats reveal">
+      <div class="stat bad">
+        <div class="lbl">Critical <span class="pill">FIX NOW</span></div>
+        <div class="num">17</div>
+        <div class="desc">Severe technical errors preventing proper crawl and index.</div>
+        <div class="bar"><i style="width:100%"></i></div>
+      </div>
+      <div class="stat warn">
+        <div class="lbl">Warnings <span class="pill">REVIEW</span></div>
+        <div class="num">38</div>
+        <div class="desc">Mid-priority items that affect performance and SEO.</div>
+        <div class="bar"><i style="width:78%"></i></div>
+      </div>
+      <div class="stat ok">
+        <div class="lbl">Other errors <span class="pill">CLEAN</span></div>
+        <div class="num">0</div>
+        <div class="desc">No non-critical technical errors detected.</div>
+        <div class="bar"><i style="width:5%"></i></div>
+      </div>
+      <div class="stat ok">
+        <div class="lbl">Notices <span class="pill">CLEAN</span></div>
+        <div class="num">0</div>
+        <div class="desc">No informational issues raised by the audit.</div>
+        <div class="bar"><i style="width:5%"></i></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============== CRAWLER & DISCOVERY ============== -->
+<section class="section">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <div class="section-id">03 · Crawler &amp; Discovery</div>
+        <h2 class="section-title">Search engines have <em>nothing to follow</em>.</h2>
+      </div>
+      <div class="section-sub">Both the discovery files that tell crawlers what to do are missing.</div>
+    </div>
+
+    <div class="callout accent reveal">
+      <div class="marker">Critical · Discovery</div>
+      <div>
+        <h3>No <em>robots.txt</em> &nbsp;·&nbsp; No <em>sitemap.xml</em></h3>
+        <p>Six pages are technically indexable, but the site ships zero instructions to crawlers. Search engines are left to guess. Add <code style="font-family:'JetBrains Mono',monospace;background:rgba(0,0,0,0.25);padding:2px 8px;border-radius:2px">/robots.txt</code> and generate a <code style="font-family:'JetBrains Mono',monospace;background:rgba(0,0,0,0.25);padding:2px 8px;border-radius:2px">/sitemap.xml</code> with all indexable URLs and submit to Google Search Console &amp; Bing Webmaster Tools.</p>
+      </div>
+    </div>
+
+    <div style="height:32px"></div>
+
+    <div class="threecol">
+      <div class="col-card ok reveal">
+        <div class="hd">Crawl limit <span class="stamp">M-04</span></div>
+        <div class="big">1000</div>
+        <div class="body">Maximum URLs the audit crawler was willing to fetch from the site.</div>
+      </div>
+      <div class="col-card bad reveal reveal-2">
+        <div class="hd">Pages crawled <span class="stamp">M-04</span></div>
+        <div class="big">6</div>
+        <div class="body">Less than 1% of the crawl budget was used. Indicates a small, shallow site — or a barrier to deeper discovery.</div>
+      </div>
+      <div class="col-card warn reveal reveal-3">
+        <div class="hd">Discovery files <span class="stamp">M-11 / M-12</span></div>
+        <div class="big">0<small style="font-size:18px;color:var(--muted-2);font-family:'JetBrains Mono',monospace;margin-left:6px">/ 2</small></div>
+        <div class="body">robots.txt and sitemap.xml both missing. Total sitemap errors: 1.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============== SECURITY ============== -->
+<section class="section">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <div class="section-id">04 · Security</div>
+        <h2 class="section-title">Encryption is in place. <em>Renewal is overdue.</em></h2>
+      </div>
+      <div class="section-sub">SSL, HTTPS redirect, and certificate trust are all green. The certificate itself has already expired.</div>
+    </div>
+
+    <div class="callout reveal" style="margin-bottom:32px">
+      <div class="marker">Time-critical</div>
+      <div>
+        <h3>SSL certificate expired <em>09 Jan 2026</em></h3>
+        <p>The certificate on file is trusted and correctly bound to the domain, but it expired 202 days before this report was generated. Browsers will now block the site, mark it "Not Secure", and SEO rankings will degrade. Renew immediately.</p>
+      </div>
+    </div>
+
+    <div class="status-grid reveal">
+      <div>
+        <div class="status-row"><span class="lbl">SSL certificate installed</span><span class="val yes"><span class="ico"></span>Yes</span></div>
+        <div class="status-row"><span class="lbl">Valid until</span><span class="val warn"><span class="ico"></span>09.01.2026 · EXPIRED</span></div>
+        <div class="status-row"><span class="lbl">Self-signed</span><span class="val yes"><span class="ico"></span>No</span></div>
+        <div class="status-row"><span class="lbl">Domain in certificate</span><span class="val yes"><span class="ico"></span>Yes</span></div>
+        <div class="status-row"><span class="lbl">Trusted CA</span><span class="val yes"><span class="ico"></span>Yes</span></div>
+      </div>
+      <div>
+        <div class="status-row"><span class="lbl">301 redirect HTTP → HTTPS</span><span class="val yes"><span class="ico"></span>Yes</span></div>
+        <div class="status-row"><span class="lbl">Port 443 in URL</span><span class="val yes"><span class="ico"></span>No (clean URL)</span></div>
+        <div class="status-row"><span class="lbl">IP blacklisted</span><span class="val yes"><span class="ico"></span>No</span></div>
+        <div class="status-row"><span class="lbl">Mixed content (http on https)</span><span class="val yes"><span class="ico"></span>0</span></div>
+        <div class="status-row"><span class="lbl">Compromised-domain links</span><span class="val yes"><span class="ico"></span>0</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============== DOMAIN & HOSTING ============== -->
+<section class="section">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <div class="section-id">05 · Domain &amp; Hosting</div>
+        <h2 class="section-title">A young domain parked on <em>US infrastructure</em>.</h2>
+      </div>
+      <div class="section-sub">DNS points to parking nameservers. Origin server is hosted in the United States, which adds latency for Indonesian visitors.</div>
+    </div>
+
+    <div class="twocol">
+      <div>
+        <table>
+          <thead>
+            <tr><th colspan="2">Domain</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Domain age</td><td class="num">1 yr · 2 mo</td></tr>
+            <tr><td>Expiration</td><td class="num">16 May 2027</td></tr>
+            <tr><td>Status</td><td class="num"><span class="dot green"></span>Active</td></tr>
+            <tr><td>IDN / punycode</td><td class="num">None</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div>
+        <table>
+          <thead>
+            <tr><th colspan="2">Hosting</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Nameservers</td><td class="num">dns-parking.com</td></tr>
+            <tr><td>IP address</td><td class="num">75.2.60.5</td></tr>
+            <tr><td>Location</td><td class="num"><span class="dot amber"></span>United States</td></tr>
+            <tr><td>CDN / edge</td><td class="num"><span class="dot red"></span>None detected</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============== SERVER & RESOURCES ============== -->
+<section class="section">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <div class="section-id">06 · Server &amp; Resources</div>
+        <h2 class="section-title">The <em>runtime is clean</em>. There is nothing wrong with the server itself.</h2>
+      </div>
+      <div class="section-sub">All error categories, broken resources, and chained redirects are at zero. A solid foundation to build on.</div>
+    </div>
+
+    <div class="threecol">
+      <div class="col-card ok reveal">
+        <div class="hd">Server errors <span class="stamp">M-09</span></div>
+        <div class="big">0</div>
+        <div class="body">5xx, unanswered URLs, error-message leaks, and 404 handling are all correct. www vs. non-www canonicalization is set.</div>
+      </div>
+      <div class="col-card ok reveal reveal-2">
+        <div class="hd">Resources <span class="stamp">M-10</span></div>
+        <div class="big">0</div>
+        <div class="body">No 4xx, no broken images, no broken JS or CSS. One unrelated lost file detected.</div>
+      </div>
+      <div class="col-card ok reveal reveal-3">
+        <div class="hd">Availability <span class="stamp">M-06</span></div>
+        <div class="big">4<small style="font-size:18px;color:var(--muted-2);font-family:'JetBrains Mono',monospace">/4</small></div>
+        <div class="body">Preferred URL resolves correctly, accessible from 15/15 global checkpoints, identical content for all user-agents.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============== HTML & SCHEMA ============== -->
+<section class="section">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <div class="section-id">07 · HTML · Schema · Images</div>
+        <h2 class="section-title">No <em>structured data</em> on any page. <em>No rich results possible.</em></h2>
+      </div>
+      <div class="section-sub">A small handful of HTML errors, but the bigger issue is the complete absence of Schema.org markup.</div>
+    </div>
+
+    <div class="threecol">
+      <div class="col-card warn reveal">
+        <div class="hd">HTML errors <span class="stamp">M-13</span></div>
+        <div class="big">6<small style="font-size:18px;color:var(--muted-2);font-family:'JetBrains Mono',monospace">/3 pages</small></div>
+        <div class="body">Six errors concentrated on three pages. No duplicate titles, no oversized HTML, DOCTYPE is correct.</div>
+      </div>
+      <div class="col-card bad reveal reveal-2">
+        <div class="hd">Schema.org markup <span class="stamp">M-14</span></div>
+        <div class="big">0<small style="font-size:18px;color:var(--muted-2);font-family:'JetBrains Mono',monospace">/0%</small></div>
+        <div class="body">Zero pages carry structured data. The site cannot appear as a rich result in Google. Add Organization, LocalBusiness, and Product schemas.</div>
+      </div>
+      <div class="col-card warn reveal reveal-3">
+        <div class="hd">Image SEO <span class="stamp">M-15</span></div>
+        <div class="big">29</div>
+        <div class="body">29 images total · 5 missing alt · all 29 missing the title attribute. One page has no unique images.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============== PAGE SPEED ============== -->
+<section class="section">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <div class="section-id">08 · Page Speed</div>
+        <h2 class="section-title">Desktop is <em>excellent</em>. Mobile needs a trim.</h2>
+      </div>
+      <div class="section-sub">The single strongest area of the report. Below-the-fold JS or image weight is the likely mobile bottleneck.</div>
+    </div>
+    <div class="speed">
+      <div class="speed-card reveal">
+        <div class="lbl">Mobile · PageSpeed</div>
+        <div class="val">79<em>/100</em></div>
+        <div class="bar"><i id="mobBar" style="width:0%"></i></div>
+        <div class="bar-labels"><span>0</span><span>50</span><span>100</span></div>
+        <div class="footnote">Above the 75-point "good" threshold. Target ≥ 90 for competitive niches.</div>
+      </div>
+      <div class="speed-card reveal reveal-2">
+        <div class="lbl">Desktop · PageSpeed</div>
+        <div class="val">97<em>/100</em></div>
+        <div class="bar"><i id="deskBar" style="width:0%"></i></div>
+        <div class="bar-labels"><span>0</span><span>50</span><span>100</span></div>
+        <div class="footnote">1.09 s average HTML load · 1 page slower than 3.5 s. Lighthouse-clean.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============== SEO AUDIT ============== -->
+<section class="section">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <div class="section-id">09 · SEO Audit</div>
+        <h2 class="section-title"><em>24 critical</em> on-page SEO errors across the site.</h2>
+      </div>
+      <div class="section-sub">The single largest bucket of issues in the report — every one of them is fixable in a sprint.</div>
+    </div>
+
+    <div class="stats reveal">
+      <div class="stat bad">
+        <div class="lbl">Critical <span class="pill">FIX NOW</span></div>
+        <div class="num">24</div>
+        <div class="desc">Page-level SEO errors blocking indexation.</div>
+        <div class="bar"><i style="width:100%"></i></div>
+      </div>
+      <div class="stat warn">
+        <div class="lbl">Other <span class="pill">FIX SOON</span></div>
+        <div class="num">4</div>
+        <div class="desc">Lower-severity SEO issues to clean up.</div>
+        <div class="bar"><i style="width:17%"></i></div>
+      </div>
+      <div class="stat ok">
+        <div class="lbl">Warnings <span class="pill">CLEAN</span></div>
+        <div class="num">0</div>
+        <div class="desc">No SEO warnings remaining.</div>
+        <div class="bar"><i style="width:3%"></i></div>
+      </div>
+      <div class="stat ok">
+        <div class="lbl">Notices <span class="pill">CLEAN</span></div>
+        <div class="num">0</div>
+        <div class="desc">No informational SEO notices.</div>
+        <div class="bar"><i style="width:3%"></i></div>
+      </div>
+    </div>
+
+    <div style="height:40px"></div>
+
+    <table class="reveal">
+      <thead>
+        <tr><th style="width:60%">Critical SEO error in HTML</th><th style="text-align:right">Count</th><th style="text-align:right">Severity</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><span class="dot red"></span>Pages with identical meta title tag</td><td class="num">2</td><td class="num"><span class="dot red"></span>High</td></tr>
+        <tr><td><span class="dot red"></span>Pages missing meta description</td><td class="num">6</td><td class="num"><span class="dot red"></span>High</td></tr>
+        <tr><td><span class="dot red"></span>Pages missing h1 heading</td><td class="num">3</td><td class="num"><span class="dot red"></span>High</td></tr>
+        <tr><td><span class="dot red"></span>Other SEO errors (short meta description &lt; 5 words)</td><td class="num">6</td><td class="num"><span class="dot red"></span>High</td></tr>
+        <tr><td><span class="dot amber"></span>Pages with thin content</td><td class="num">2</td><td class="num"><span class="dot amber"></span>Medium</td></tr>
+        <tr><td><span class="dot amber"></span>Pages with keyword stuffing (main text)</td><td class="num">4</td><td class="num"><span class="dot amber"></span>Medium</td></tr>
+        <tr><td><span class="dot amber"></span>Pages with keyword stuffing (headings)</td><td class="num">1</td><td class="num"><span class="dot amber"></span>Medium</td></tr>
+        <tr><td><span class="dot amber"></span>Landing pages with &lt; 5 inbound internal links</td><td class="num">5</td><td class="num"><span class="dot amber"></span>Medium</td></tr>
+        <tr><td><span class="dot gray"></span>URL / advertising / snippet cannibalization</td><td class="num">0</td><td class="num"><span class="dot green"></span>None</td></tr>
+        <tr><td><span class="dot gray"></span>Orphan pages</td><td class="num">0</td><td class="num"><span class="dot green"></span>None</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ============== CONTENT ============== -->
+<section class="section">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <div class="section-id">10 · Content Quality</div>
+        <h2 class="section-title">Two pages are <em>thin</em>. Four pages are <em>over-stuffed</em>.</h2>
+      </div>
+      <div class="section-sub">No plagiarism, no adult content, no duplicates — but the line between "too little" and "too much" needs editing.</div>
+    </div>
+
+    <div class="threecol">
+      <div class="col-card warn reveal">
+        <div class="hd">Thin content <span class="stamp">M-21</span></div>
+        <div class="big">2</div>
+        <div class="body">Pages with insufficient text depth. Expand to 300+ words with original value, not keyword padding.</div>
+      </div>
+      <div class="col-card warn reveal reveal-2">
+        <div class="hd">Keyword stuffing <span class="stamp">M-22</span></div>
+        <div class="big">4</div>
+        <div class="body">Four pages repeat target terms excessively in body copy. One page also over-optimizes its headings.</div>
+      </div>
+      <div class="col-card ok reveal reveal-3">
+        <div class="hd">Duplicates &amp; plagiarism <span class="stamp">M-21</span></div>
+        <div class="big">0</div>
+        <div class="body">No 100% duplicate pages, no similar content, no plagiarism flags, no adult or swear-word content.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============== LANDING PAGE ESSENTIALS ============== -->
+<section class="section">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <div class="section-id">11 · Landing Page Essentials</div>
+        <h2 class="section-title">Strong on <em>trust</em>. Weak on <em>conversion</em>.</h2>
+      </div>
+      <div class="section-sub">Social links and HTTPS are healthy. E-commerce conversion primitives — cart, "Buy", payment, stock — are nearly absent.</div>
+    </div>
+
+    <div class="bars reveal" id="lpBars">
+      <div class="bar-row"><div class="name">HTTPS protocol</div><div class="bar-track"><div class="bar-fill" data-w="100"></div></div><div class="num">100<small>%</small></div></div>
+      <div class="bar-row"><div class="name">Facebook URL</div><div class="bar-track"><div class="bar-fill" data-w="62"></div></div><div class="num">62<small>%</small></div></div>
+      <div class="bar-row"><div class="name">Instagram URL</div><div class="bar-track"><div class="bar-fill" data-w="53"></div></div><div class="num">53<small>%</small></div></div>
+      <div class="bar-row"><div class="name">LinkedIn URL</div><div class="bar-track"><div class="bar-fill" data-w="44"></div></div><div class="num">44<small>%</small></div></div>
+      <div class="bar-row"><div class="name">Business Hours</div><div class="bar-track"><div class="bar-fill" data-w="31"></div></div><div class="num">31<small>%</small></div></div>
+      <div class="bar-row"><div class="name">Twitter URL</div><div class="bar-track"><div class="bar-fill" data-w="30"></div></div><div class="num">30<small>%</small></div></div>
+      <div class="bar-row"><div class="name">Frequently bought together</div><div class="bar-track"><div class="bar-fill" data-w="28"></div></div><div class="num">28<small>%</small></div></div>
+      <div class="bar-row"><div class="name">Google Maps</div><div class="bar-track"><div class="bar-fill" data-w="28"></div></div><div class="num">28<small>%</small></div></div>
+      <div class="bar-row"><div class="name">YouTube URL</div><div class="bar-track"><div class="bar-fill" data-w="23"></div></div><div class="num">23<small>%</small></div></div>
+      <div class="bar-row"><div class="name">Calculator</div><div class="bar-track"><div class="bar-fill" data-w="22"></div></div><div class="num">22<small>%</small></div></div>
+      <div class="bar-row"><div class="name">Shipping Details</div><div class="bar-track"><div class="bar-fill" data-w="22"></div></div><div class="num">22<small>%</small></div></div>
+      <div class="bar-row"><div class="name">Video</div><div class="bar-track"><div class="bar-fill" data-w="22"></div></div><div class="num">22<small>%</small></div></div>
+      <div class="bar-row"><div class="name">Live chat</div><div class="bar-track"><div class="bar-fill" data-w="9"></div></div><div class="num">9<small>%</small></div></div>
+      <div class="bar-row"><div class="name">Product photo</div><div class="bar-track"><div class="bar-fill" data-w="9"></div></div><div class="num">9<small>%</small></div></div>
+      <div class="bar-row"><div class="name">Product feedbacks</div><div class="bar-track"><div class="bar-fill" data-w="9"></div></div><div class="num">9<small>%</small></div></div>
+      <div class="bar-row"><div class="name">Similar / Related items</div><div class="bar-track"><div class="bar-fill" data-w="8"></div></div><div class="num">8<small>%</small></div></div>
+      <div class="bar-row accent"><div class="name">"Buy" or "Order" button</div><div class="bar-track"><div class="bar-fill" data-w="6"></div></div><div class="num">6<small>%</small></div></div>
+      <div class="bar-row accent"><div class="name">In stock indicator</div><div class="bar-track"><div class="bar-fill" data-w="5"></div></div><div class="num">5<small>%</small></div></div>
+      <div class="bar-row accent"><div class="name">Payment methods</div><div class="bar-track"><div class="bar-fill" data-w="4"></div></div><div class="num">4<small>%</small></div></div>
+      <div class="bar-row accent"><div class="name">Cart at the top of the page</div><div class="bar-track"><div class="bar-fill" data-w="3"></div></div><div class="num">3<small>%</small></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============== GOOGLE RANKINGS (BIG CALLOUT) ============== -->
+<section class="section">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <div class="section-id">12 · Google Rankings · Indonesia</div>
+        <h2 class="section-title">The site <em>does not appear</em> for any of its 50 tracked keywords.</h2>
+      </div>
+      <div class="section-sub">Zero positions in Top 5, Top 10, Top 20, Top 30, or Top 50 — on both desktop and mobile, Google Indonesia.</div>
+    </div>
+
+    <div class="rank-zero reveal">
+      <div class="lbl">Critical · Visibility</div>
+      <h3>Out of the <em>Top 50</em> on Google ID.</h3>
+      <p>Four of the 50 tracked keywords are commercial intent. None of them — commercial or informational — rank in any top 50 position on either desktop or mobile. The site is, for all practical SEO purposes, invisible.</p>
+      <div class="metrics">
+        <div><div class="n">50</div><div class="l">Keywords tracked</div></div>
+        <div><div class="n">4</div><div class="l">Commercial</div></div>
+        <div><div class="n">0</div><div class="l">In Top 50</div></div>
+      </div>
+    </div>
+
+    <div style="height:32px"></div>
+
+    <div class="threecol">
+      <div class="col-card bad reveal">
+        <div class="hd">Desktop · Google ID <span class="stamp">M-27</span></div>
+        <div class="big">0</div>
+        <div class="body">No keyword in Top 5, Top 10, Top 20, Top 30, or Top 50. No ranking drops because there were no rankings to lose.</div>
+      </div>
+      <div class="col-card bad reveal reveal-2">
+        <div class="hd">Mobile · Google ID <span class="stamp">M-28</span></div>
+        <div class="big">0</div>
+        <div class="body">Identical pattern on mobile. The site has zero presence in the SERP regardless of device.</div>
+      </div>
+      <div class="col-card ok reveal reveal-3">
+        <div class="hd">Indexability <span class="stamp">M-19</span></div>
+        <div class="big">OK</div>
+        <div class="body">The site is not blocked from indexing. The lack of rankings is therefore a relevance and authority problem, not a robots problem.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============== FOOTER ============== -->
+<footer>
+  <div class="wrap">
+    <div class="row">
+      <div>File · YXP-2026-0730</div>
+      <div class="center">yess-xpress.id</div>
+      <div>Generated · 30 July 2026</div>
+    </div>
+    <div class="row" style="margin-top:24px;padding-top:24px;border-top:1px solid var(--line)">
+      <div>Site Summary Report · 28 modules</div>
+      <div>End of document</div>
+      <div>Confidential</div>
+    </div>
+  </div>
+</footer>
+
+<script>
+// Reveal on scroll
+const io = new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      e.target.classList.add('in');
+      io.unobserve(e.target);
+    }
+  });
+},{threshold:0.12,rootMargin:'0px 0px -60px 0px'});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+// Animate bars
+const barIo = new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      e.target.querySelectorAll('.bar-fill').forEach(b=>{
+        const w = b.dataset.w || 0;
+        requestAnimationFrame(()=>{ b.style.width = w + '%'; });
+      });
+      barIo.unobserve(e.target);
+    }
+  });
+},{threshold:0.2});
+document.querySelectorAll('#compBars, #lpBars').forEach(el=>barIo.observe(el));
+
+// Animate speed bars
+const speedIo = new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      const m = document.getElementById('mobBar');
+      const d = document.getElementById('deskBar');
+      if(m) requestAnimationFrame(()=>{ m.style.width='79%'; });
+      if(d) requestAnimationFrame(()=>{ d.style.width='97%'; });
+      speedIo.unobserve(e.target);
+    }
+  });
+},{threshold:0.3});
+const speedEl = document.querySelector('.speed');
+if(speedEl) speedIo.observe(speedEl);
+</script>
+</body>
+</html>
